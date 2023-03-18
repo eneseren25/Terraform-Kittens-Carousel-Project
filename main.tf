@@ -43,13 +43,13 @@ resource "aws_instance" "tfmyec2" {
   #! /bin/bash
   yum update -y
   yum install httpd -y
-  FOLDER="https://raw.githubusercontent.com/serdarcw/project-repository/master/Project-101-kittens-carousel-static-website-ec2/static-web"
+  FOLDER="https://github.com/eneseren25/Terraform-Kittens-Carousel-Project/tree/main/static-web"
   cd /var/www/html
-  wget ${FOLDER}/index.html
-  wget ${FOLDER}/cat0.jpg
-  wget ${FOLDER}/cat1.jpg
-  wget ${FOLDER}/cat2.jpg
-  wget ${FOLDER}/cat3.png
+  wget https://raw.githubusercontent.com/eneseren25/Terraform-Kittens-Carousel-Project/main/static-web/index.html
+  wget https://raw.githubusercontent.com/eneseren25/Terraform-Kittens-Carousel-Project/main/static-web/cat0.jpg
+  wget https://raw.githubusercontent.com/eneseren25/Terraform-Kittens-Carousel-Project/main/static-web/cat1.jpg
+  wget https://raw.githubusercontent.com/eneseren25/Terraform-Kittens-Carousel-Project/main/static-web/cat2.jpg
+  wget https://raw.githubusercontent.com/eneseren25/Terraform-Kittens-Carousel-Project/main/static-web/cat3.png
   systemctl start httpd
   systemctl enable httpd
   EOF
@@ -57,7 +57,7 @@ resource "aws_instance" "tfmyec2" {
 }
 
 resource "aws_security_group" "tf-sec-gr" {
-  name = "${var.tag}-terraform-sec-grp"
+  name = "${var.tag}-sec-grp"
   tags = {
     Name = "${var.tag}-Sec-Grop"
   }
